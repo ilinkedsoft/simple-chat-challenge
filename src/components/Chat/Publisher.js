@@ -13,10 +13,10 @@ const Publisher = ({ publish, selectedUser, username }) => {
   return (
     <Card>
       <Row gutter={20}>
-        <Col span={20}>
+        <Col flex={"1 0 auto"}>
           <Input placeholder='enter your text here' value={text} onChange={(e) => setText(e.target.value)}/>
         </Col>
-        <Col span={4}>
+        <Col>
           <Button type="primary" onClick={onSend} disabled={text === ''}>Send to {isPublic() ? 'All' : selectedUser}</Button>
         </Col>
       </Row>
