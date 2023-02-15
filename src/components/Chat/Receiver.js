@@ -30,13 +30,12 @@ const Receiver = ({ payload, username, selectedUser, setSelectedUser }) => {
       let isChanged = false;
       users.forEach((user) => {
         const _user = {...user};
-        if (_user.username !== '--all--' && Date.now() - _user.date > 1500) {
+        if (_user.username !== '--all--' && Date.now() - _user.date > 3000) {
           _user.isOnline = false;
           isChanged = true;
         }
         _users.push(_user);
       });
-      console.log('***');
       if (isChanged) setUsers(_users);
     }, 1000);
     return () => clearInterval(timer);
@@ -68,6 +67,7 @@ const Receiver = ({ payload, username, selectedUser, setSelectedUser }) => {
             bordered
             dataSource={messages}
             renderItem={renderMessageItem}
+            style={{overflow: 'auto', height: '400px'}}
           />
         </Col>
         <Col span={6}>
@@ -76,6 +76,7 @@ const Receiver = ({ payload, username, selectedUser, setSelectedUser }) => {
             bordered
             dataSource={users}
             renderItem={renderUserItem}
+            style={{overflow: 'auto', height: '400px'}}
           />
         </Col>
       </Row>
